@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>問題と回答</title>
+  </head>
+  <body>
+    <h1>問題と回答</h1>
+    <div id="question1" style="display:block;">
+      <p><strong>問題1:</strong> 問題1</p>
+      <p><strong>回答:</strong> <input type="text" id="answer1"></p>
+      <p><button id="submit1">送信</button></p>
+    </div>
+    <div id="question2" style="display:none;">
+      <p><strong>問題2:</strong> 問題2</p>
+      <p><strong>回答:</strong> <input type="text" id="answer2"></p>
+      <p><button id="submit2">送信</button></p>
+    </div>
+    <!-- ここに他の問題を追加 -->
+    <script>
+      function checkAnswer(questionNum, answer) {
+        const correctAnswer = "正解";
+        if (answer === correctAnswer) {
+          alert("正解！");
+        } else {
+          alert("不正解");
+        }
+        const nextQuestionId = "question" + (questionNum + 1);
+        const nextQuestionEl = document.getElementById(nextQuestionId);
+        if (nextQuestionEl) {
+          nextQuestionEl.style.display = "block";
+        }
+        const currentQuestionId = "question" + questionNum;
+        const currentQuestionEl = document.getElementById(currentQuestionId);
+        currentQuestionEl.style.display = "none";
+      }
+
+      document.getElementById("submit1").addEventListener("click", function() {
+        const answer1 = document.getElementById("answer1").value;
+        checkAnswer(1, answer1);
+      });
+
+      document.getElementById("submit2").addEventListener("click", function() {
+        const answer2 = document.getElementById("answer2").value;
+        checkAnswer(2, answer2);
+      });
+      // ここに他の問題に対するイベントリスナーを追加
+    </script>
+  </body>
+</html>
